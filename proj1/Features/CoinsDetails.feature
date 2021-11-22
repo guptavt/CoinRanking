@@ -9,6 +9,6 @@ Scenario: Get multiple coins details
     And print coin details order by <sortorder> on <field>
 	Examples:
 	|	coins							|	sortorder	|	field		|	dataToFilter	|
-	|	Doge,Solana,Bitcoin Cash	|	DSC			|	firstSeen	|	coins			|
+	|	Dogecoin,Solana,Bitcoin Cash	|	DSC			|	firstSeen	|	coins			|
 	#Doge, Solana, Bitcoin Cash.
 

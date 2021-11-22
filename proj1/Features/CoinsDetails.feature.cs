@@ -76,7 +76,7 @@ namespace proj1.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Get multiple coins details")]
-        [NUnit.Framework.TestCaseAttribute("Doge,Solana,Bitcoin Cash", "DSC", "firstSeen", "coins", null)]
+        [NUnit.Framework.TestCaseAttribute("Dogecoin,Solana,Bitcoin Cash", "DSC", "firstSeen", "coins", null)]
         public virtual void GetMultipleCoinsDetails(string coins, string sortorder, string field, string dataToFilter, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;

@@ -18,6 +18,10 @@ namespace Coinranking
             IRestResponse response;
             var env = Environment.GetEnvironmentVariables();         
             string apiKey = Environment.GetEnvironmentVariable("API_KEY");
+
+            if (apiKey==null)
+            { string value = System.Configuration.ConfigurationManager.AppSettings["API_KEY"];
+            }
             Assert.NotNull(apiKey, "API key not found");
             RestClient client = new RestClient(baseUrl);
             IRestRequest request = new RestRequest(resource, method);
