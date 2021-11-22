@@ -1,0 +1,42 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    
+#     - name: setup NUGET
+#       run: NuGet/setup-nuget@v1.0.5
+      
+    - name: Restore Nuget Packages
+      run: nuget restore Coinranking.sln
+      
+    - name: Build
+      run: msbuild Coinranking.sln
+      env:
+          API_KEY: ${{ secrets.API_KEY }}
+          
+    - name: Test
+      working-directory: .
+#       run: vstest.console proj1\bin\Debug\proj1.dll /Platform:x64
+      run: packages\NUnit.ConsoleRunner.3.10.0\tools\nunit3-console.exe proj1\bin\Debug\proj1.dll
+#       run: dotnet test --logger:trx
+      env:
+          API_KEY: ${{ secrets.API_KEY }}
