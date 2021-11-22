@@ -2,6 +2,7 @@
 using System.Collections;
 using NUnit.Framework;
 using RestSharp;
+using System.Configuration;
 
 namespace Coinranking
 {
@@ -20,7 +21,7 @@ namespace Coinranking
             string apiKey = Environment.GetEnvironmentVariable("API_KEY");
 
             if (apiKey==null)
-            { string value = System.Configuration.ConfigurationManager.AppSettings["API_KEY"];
+            { string value = ConfigurationManager.AppSettings["API_KEY"];
             }
             Assert.NotNull(apiKey, "API key not found");
             RestClient client = new RestClient(baseUrl);
