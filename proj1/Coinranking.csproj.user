@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <StartAction>Project</StartAction>
+    <EnvironmentVariables>
+      <Variable name="API_KEY" value="94ebda92f5mshe072a55ee90f94cp114979jsnc8bae1495a57" />
+    </EnvironmentVariables>
+  </PropertyGroup>
+</Project>
