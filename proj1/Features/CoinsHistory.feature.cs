@@ -20,8 +20,8 @@ namespace proj1.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("CoinsHistory")]
-    public partial class CoinsHistoryFeature
+    [NUnit.Framework.DescriptionAttribute("PrintCoinsHistory")]
+    public partial class PrintCoinsHistoryFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,9 @@ namespace proj1.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "CoinsHistory", "\tGet coin\'s latest and historical price from 7 days", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PrintCoinsHistory", "\t\t In order to get coin\'s latest and historical details from 7 days,\r\n\t\t I want t" +
+                    "o print its price and time stamp in human readable format \r\n\t\t sorted from oldes" +
+                    "t to newest ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,19 +76,25 @@ namespace proj1.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Get 7 day history for multiple coins")]
-        [NUnit.Framework.TestCaseAttribute("Bitcoin,Ethereum,Cardano", "DSC", "7d", "coins", null)]
-        public virtual void Get7DayHistoryForMultipleCoins(string coins, string sortorder, string duration, string dataToFilter, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Print latest and historical price of coins from 7 days from oldest to newest")]
+        [NUnit.Framework.CategoryAttribute("CoinHistory")]
+        [NUnit.Framework.TestCaseAttribute("coins", "Bitcoin,Ethereum,Cardano", "7d", null)]
+        public virtual void PrintLatestAndHistoricalPriceOfCoinsFrom7DaysFromOldestToNewest(string dataToFilter, string coins, string duration, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] @__tags = new string[] {
+                    "CoinHistory"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("coins", coins);
-            argumentsOfScenario.Add("sortorder", sortorder);
-            argumentsOfScenario.Add("duration", duration);
             argumentsOfScenario.Add("dataToFilter", dataToFilter);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get 7 day history for multiple coins", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 8
-   this.ScenarioInitialize(scenarioInfo);
+            argumentsOfScenario.Add("coins", coins);
+            argumentsOfScenario.Add("duration", duration);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Print latest and historical price of coins from 7 days from oldest to newest", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 7
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -105,20 +113,20 @@ namespace proj1.Features
             else
             {
                 this.ScenarioStart();
-#line 9
+#line 8
     testRunner.Given("/coins request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 10
+#line 9
  testRunner.When("GET request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
+#line 10
  testRunner.Then(string.Format("find {0} matching {1}", dataToFilter, coins), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 12
+#line 11
     testRunner.Then(string.Format("find coins history for {0}", duration), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 13
- testRunner.And("print each coin oldest and most recent history", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
+ testRunner.And("print each coin oldest and most recent price history", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -20,8 +20,8 @@ namespace proj1.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ExchangeDetails")]
-    public partial class ExchangeDetailsFeature
+    [NUnit.Framework.DescriptionAttribute("PrintExchangeDetails")]
+    public partial class PrintExchangeDetailsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,8 +35,9 @@ namespace proj1.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ExchangeDetails", "\tPrint exchange details and sort the output by number of markets provided by each" +
-                    " exchange", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PrintExchangeDetails", "\t\t In order to get exchange details I want to print name, number of markets, volu" +
+                    "me and rank sorted \r\n\t\t in ascending order of number of markets served by each e" +
+                    "xchange", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,17 +77,17 @@ namespace proj1.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Get multiple exchanges details")]
-        [NUnit.Framework.TestCaseAttribute("Bitrue,Binance,WhiteBIT", "ASC", "numberOfMarkets", "exchanges", null)]
-        public virtual void GetMultipleExchangesDetails(string exchanges, string sortorder, string field, string dataToFilter, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("exchanges", "Bitrue,Binance,WhiteBIT", "Ascending", "numberOfMarkets", null)]
+        public virtual void GetMultipleExchangesDetails(string dataToFilter, string exchanges, string sortorder, string field, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("dataToFilter", dataToFilter);
             argumentsOfScenario.Add("exchanges", exchanges);
             argumentsOfScenario.Add("sortorder", sortorder);
             argumentsOfScenario.Add("field", field);
-            argumentsOfScenario.Add("dataToFilter", dataToFilter);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get multiple exchanges details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 4
+#line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -106,16 +107,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 5
+#line 6
     testRunner.Given("/exchanges request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 6
+#line 7
  testRunner.When("GET request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 7
+#line 8
  testRunner.Then(string.Format("find {0} matching {1}", dataToFilter, exchanges), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 8
+#line 9
     testRunner.And(string.Format("print exchange details order by {0} on {1}", sortorder, field), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

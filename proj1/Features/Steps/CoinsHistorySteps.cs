@@ -27,24 +27,24 @@ namespace Coinranking.Features.Steps
             Dictionary<string, List<CoinHistory>> coinHistoryDetails = new Dictionary<string, List<CoinHistory>>();
             coinsData.ForEach(coin =>
             {
-                string url = "/coin/" + coin.id + "/history/7d";
+                string url = "/coin/" + coin.id + "/history/"+ duration; // build url for getting coin history
                 IRestResponse coinHistoryResponse = new HttpHelper().ExecuteRequest(url, Method.GET);
                 if (coinHistoryResponse != null)
                 {
-                    Assert.IsTrue(coinHistoryResponse.IsSuccessful, "Request failed");
+                    Assert.IsTrue(coinHistoryResponse.IsSuccessful, "Request failed.");
                     CoinHistoryGETResponse response = Utils.DeserialiseResponse<CoinHistoryGETResponse>(coinHistoryResponse);
-                    Assert.IsTrue(response.status.Equals("success"), "status is wrong");
+                    Assert.IsTrue(response.status.Equals("success"), "Status is wrong.");
                     List<CoinHistory> histories = response.data.history;
                     histories = histories
                     .OrderBy(history => history.timestamp)
                     .ToList();
-                    coinHistoryDetails.Add(coin.name, histories);
+                    coinHistoryDetails.Add(coin.name, histories); // add coin history against its name
                 }
             });
             this.scenarioContext.Set(coinHistoryDetails, "CoinHistoryDetails");
         }
 
-        [Then("print each coin oldest and most recent history")]
+        [Then("print each coin oldest and most recent price history")]
         public void ThenPrintEachCoinOldestAndMostRecentHistory()
         {
             Dictionary<string, List<CoinHistory>> coinHistoryDetails = this.scenarioContext.Get<Dictionary<string, List<CoinHistory>>>("CoinHistoryDetails");

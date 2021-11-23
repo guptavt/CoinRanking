@@ -80,6 +80,7 @@
     <Compile Include="Features\Steps\CoinsHistorySteps.cs" />
     <Compile Include="Features\Steps\CommonSteps.cs" />
     <Compile Include="Features\Steps\ExchangeDetailsSteps.cs" />
+    <Compile Include="Support\Hooks.cs" />
     <Compile Include="Models\CoinHistoryResponse\CoinHistory.cs" />
     <Compile Include="Models\CoinHistoryResponse\CoinHistoryData.cs" />
     <Compile Include="Models\CoinHistoryResponse\CoinHistoryGETResponse.cs" />

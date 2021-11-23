@@ -1,6 +1,6 @@
 ﻿Feature: PrintCoinsDetails
-In order to get coins details I want to print name, type, rank, first seen and price sorted 
-in descending order of time that each coin was first seen
+		 In order to get coins details I want to print name, type, rank, first seen and price sorted 
+		 in descending order of time that each coin was first seen
 
 Scenario: Get multiple coins details
     Given /coins request
@@ -8,7 +8,5 @@ Scenario: Get multiple coins details
 	Then find <dataToFilter> matching <coins>
     And print coin details order by <sortorder> on <field>
 	Examples:
-	|	coins							|	sortorder	|	field		|	dataToFilter	|
-	|	Dogecoin,Solana,Bitcoin Cash	|	DSC			|	firstSeen	|	coins			|
-	#Doge, Solana, Bitcoin Cash.
-
+	|	dataToFilter	|	coins							|	sortorder	|	field		|
+	|	coins			|	Dogecoin,Solana,Bitcoin Cash	|	Descending	|	firstSeen	|

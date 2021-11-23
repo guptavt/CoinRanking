@@ -35,8 +35,8 @@ namespace proj1.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PrintCoinsDetails", "In order to get coins details I want to print name, type, rank, first seen and pr" +
-                    "ice sorted \r\nin descending order of time that each coin was first seen", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PrintCoinsDetails", "\t\t In order to get coins details I want to print name, type, rank, first seen and" +
+                    " price sorted \r\n\t\t in descending order of time that each coin was first seen", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,15 +76,15 @@ namespace proj1.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Get multiple coins details")]
-        [NUnit.Framework.TestCaseAttribute("Dogecoin,Solana,Bitcoin Cash", "DSC", "firstSeen", "coins", null)]
-        public virtual void GetMultipleCoinsDetails(string coins, string sortorder, string field, string dataToFilter, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("coins", "Dogecoin,Solana,Bitcoin Cash", "Descending", "firstSeen", null)]
+        public virtual void GetMultipleCoinsDetails(string dataToFilter, string coins, string sortorder, string field, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("dataToFilter", dataToFilter);
             argumentsOfScenario.Add("coins", coins);
             argumentsOfScenario.Add("sortorder", sortorder);
             argumentsOfScenario.Add("field", field);
-            argumentsOfScenario.Add("dataToFilter", dataToFilter);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get multiple coins details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);

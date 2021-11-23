@@ -23,8 +23,8 @@ namespace Coinranking.Features.Steps
         [Then("print exchange details order by (.*) on (.*)")]
         public void ThenPrintExchangeDetailsOrderBy(string sortOrder, string sortByField)
         {
-            List<ExchangesResponse> filteredData = this.scenarioContext.Get<List<ExchangesResponse>>("FilteredData");
-            if (sortOrder.Equals("DSC"))
+            List<ExchangesResponse> filteredData = this.scenarioContext.Get<List<ExchangesResponse>>("FilteredData");// get the list of exchange to print details
+            if (sortOrder.Equals("Descending"))
             {
                 filteredData = filteredData
                 .OrderByDescending(coin => coin.GetType().GetProperty(sortByField).GetValue(coin, null)).ToList();
@@ -40,7 +40,7 @@ namespace Coinranking.Features.Steps
             filteredData.ForEach(exchange =>
             {
                 Console.WriteLine("\nName = " + exchange.name + "\rNumber of markets = " + exchange.numberOfMarkets + "\rVolume = " + exchange.volume + "\rRank = " + exchange.rank);
-            });
+            }); // print exchange details on console
         }
     }
 }

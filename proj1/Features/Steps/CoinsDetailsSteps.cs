@@ -22,8 +22,8 @@ namespace Coinranking
         [Then("print coin details order by (.*) on (.*)")]
         public void ThenPrintCoinDetailsOrderBy(string sortOrder, string sortByField)
         {
-            List<CoinsResponse> filteredData = this.scenarioContext.Get<List<CoinsResponse>>("FilteredData");
-            if (sortOrder.Equals("DSC"))
+            List<CoinsResponse> filteredData = this.scenarioContext.Get<List<CoinsResponse>>("FilteredData");// get the coins for printing details
+            if (sortOrder.Equals("Descending"))
             {
                 filteredData = filteredData
                 .OrderByDescending(coin => coin.GetType().GetProperty(sortByField).GetValue(coin, null)).ToList();
@@ -41,7 +41,7 @@ namespace Coinranking
                 string firstseen = "NA";
                 firstseen = Utils.humanizeDateTime(coin.firstSeen);
                 Console.WriteLine("\nName = " + coin.name + "\rType = " + coin.type + "\rRank = " + coin.rank + "\rFirst Seen = " + firstseen + "\rPrice = " + coinsGETResponse.data.baseAttribute.sign + coin.price + "\n");
-            });
+            }); //print coin details for requested coins
         }
     }
 }
